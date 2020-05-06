@@ -28,6 +28,7 @@ def isSubString(s1, s2):
 
 
 def isStringRotation_1st(str1, str2):
+    ''' Incorrect solution if there's duplicate char in string '''
     if len(str1) != len(str2):
         return False
 
@@ -70,6 +71,7 @@ def main():
     strList1 = ['waterbottle', 'abcde', 'aa', 'xyz', "bbbacddceeb", ""]
     strList2 = ['erbottlewat', 'abced', 'a', 'xyz', "ceebbbbacdd", ""]
  
+    # isStringRotation_1st is incorrect solution --> refer to sol in textbook
     funcList = [isStringRotation_1st, isStringRotation_sol]
 
     for func in funcList:
