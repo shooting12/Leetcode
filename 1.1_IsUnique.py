@@ -49,7 +49,49 @@ def uniqueStr_sorting(inStr):
     return True
 
 
+class Solution:
+    def containsDuplicate_dict(self, nums):
+        ''' 124ms '''
+        numDict = dict()
+
+        for c in nums:
+            if c in numDict:
+                return True
+            else:
+                numDict[c] = c
+
+        return False
+
+
+    def containsDuplicate_dict2(self, nums):
+        ''' 124ms '''
+        numDict = {}
+
+        for c in nums:
+            val = numDict.get(c, 0)
+            
+            if val:  # != 0
+                return True
+            else:
+                numDict[c] = 1
+
+        return False
+
+
+    def containsDuplicate_set(self, nums):
+        ''' 128ms '''
+        if len(nums)==len(set(nums)):
+            return False
+        else:
+            return True
+
+
+    def containsDuplicate(self, nums):
+        return self.containsDuplicate_set(nums)
+
+
 def main():
+    # --- Textbook ---
     strList = ['abc', 'aaaa', 'abcd', 'abac', '1ac23', '0ao01']
  
     funcList = [uniqueStr_1st, uniqueStr_hashtable, uniqueStr_sorting]
@@ -59,6 +101,12 @@ def main():
         for s in strList:
             ret = func(s)
             print("%s is unique: %d" % (s, ret))
+
+    # --- Leetcode ---
+    nums = [1, 2, 3, 1]
+    sol = Solution()
+    ret = sol.containsDuplicate(nums)
+    print("%s is unique: %d" % (str(nums), ret))
 
 
 #####################
